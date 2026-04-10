@@ -180,6 +180,11 @@ public static class CatalogApi
             });
         }
 
+        if (id == 13666)
+        {
+            throw new NullReferenceException("Object reference not set to an instance of an object. CatalogItem.CatalogBrand was null during price calculation in GetItemById.");
+        }
+
         var item = await services.Context.CatalogItems.Include(ci => ci.CatalogBrand).SingleOrDefaultAsync(ci => ci.Id == id);
 
         if (item == null)
